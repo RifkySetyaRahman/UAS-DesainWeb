@@ -109,7 +109,7 @@
     <div class="login-container">
         <div class="left-side">
             <img src="{{ asset('assets/imgs/AnimasiSistemInfo.jpg') }}" alt="Background Image" style="width: 100%; height: auto;">
-            <p class="bottom-text">Sistem Informasi Layanan Masyarakat Kelurahan</p>
+            <p class="bottom-text">Sistem Informasi Pendataan Karyawan</p>
         </div>
         <div class="right-side">
             <div class="login-form">
