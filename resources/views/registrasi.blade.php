@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title> Register </title>
-        <link rel="stylesheet" href="signup.css">
-         
+        <link rel="stylesheet" href="resources/css/signup.css">
+        <link rel>
     </head>
     <body>
         <div class="wrapper">
