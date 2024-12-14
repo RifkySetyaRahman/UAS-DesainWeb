@@ -23,16 +23,12 @@ class DashboardController extends Controller
         DepartemenRepositoryInterface $departemenRepository,
         KaryawanRepositoryInterface $karyawanRepository,
         PosisiRepositoryInterface $posisiRepository,
-        DepartemenService $departemenService,
-        KaryawanService $karyawanService,
-        PosisiService $posisiService
+        KaryawanService $karyawanService
     ) {
         $this->departemenRepository = $departemenRepository;
         $this->karyawanRepository = $karyawanRepository;
         $this->posisiRepository = $posisiRepository;
-        $this->departemenService = $departemenService;
         $this->karyawanService = $karyawanService;
-        $this->posisiService = $posisiService;
     }
 
     /**
