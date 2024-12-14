@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\DepartemenRepositoryInterface;
+use App\Repositories\KaryawanRepository;
 
 class DepartemenController extends Controller
 {
@@ -15,7 +16,7 @@ class DepartemenController extends Controller
 
     public function index()
     {
-        $departemen = $this->departemenRepository->getDepartmentsWithKaryawans();
+        $departemen = $this->departemenRepository->getDepartemenWithKaryawan();
         return view('departemen.index', compact('departemen'));
     }
 }

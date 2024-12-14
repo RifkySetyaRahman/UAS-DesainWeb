@@ -24,9 +24,9 @@ class DepartemenService
     /**
      * Get departemen with their karyawan count.
      */
-    public function getDepartmentsWithKaryawanCount()
+    public function getDepartemenWithKaryawanCount()
     {
-        return $this->departemenRepository->getDepartmentsWithKaryawans();
+        return $this->departemenRepository->getDepartemenWithKaryawan();
     }
 
     /**

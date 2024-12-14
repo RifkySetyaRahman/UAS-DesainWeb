@@ -43,17 +43,17 @@ class DashboardController extends Controller
     public function index(Request $request)
     {
         // Get total counts
-        $totalKaryawans = $this->karyawanRepository->all()->count();
-        $totalDepartemens = $this->departemenRepository->all()->count();
-        $totalPosisis = $this->posisiRepository->all()->count();
+        $totalKaryawan = $this->karyawanRepository->all()->count();
+        $totalDepartemen = $this->departemenRepository->all()->count();
+        $totalPosisi = $this->posisiRepository->all()->count();
 
         // Get additional statistics if needed
-        $departemenStats = $this->departemenRepository->getDepartmentsWithKaryawans();
-        $posisiStats = $this->posisiRepository->getPositionsWithKaryawans();
+        $departemenStats = $this->departemenRepository->getDepartemenWithKaryawan();
+        $posisiStats = $this->posisiRepository->getPosisiWithKaryawan();
 
-        $totalKaryawans = $this->karyawanService->getAllKaryawan()->count();
-        $departemenStats = $this->departemenService->getDepartmentsWithKaryawanCount();
-        $posisiStats = $this->posisiService->getPositionsWithKaryawanCount();
+        $totalKaryawan = $this->karyawanService->getAllKaryawan()->count();
+        $departemenStats = $this->departemenService->getDepartemenWithKaryawanCount();
+        $posisiStats = $this->posisiService->getPosisiWithKaryawanCount();
 
         $validated = $request->validate([
             'search' => 'nullable|string|max:255',
@@ -64,9 +64,9 @@ class DashboardController extends Controller
         $date = $validated['date'] ?? null;
 
         return view('dashboard.index', compact(
-            'totalKaryawans',
-            'totalDepartemens',
-            'totalPosisis',
+            'totalKaryawan',
+            'totalDepartemen',
+            'totalPosisi',
             'departemenStats',
             'posisiStats',
             'data',

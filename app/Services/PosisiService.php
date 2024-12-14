@@ -24,9 +24,9 @@ class PosisiService
     /**
      * Get posisi with their karyawan count.
      */
-    public function getPositionsWithKaryawanCount()
+    public function getPosisiWithKaryawanCount()
     {
-        return $this->posisiRepository->getPositionsWithKaryawans();
+        return $this->posisiRepository->getPosisiWithKaryawan();
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Repositories\DepartemenRepositoryInterface;
 use App\Models\Departemen;
 
 class DepartemenRepository extends BaseRepository implements DepartemenRepositoryInterface
@@ -16,7 +17,7 @@ class DepartemenRepository extends BaseRepository implements DepartemenRepositor
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getDepartmentsWithKaryawans()
+    public function getDepartemenWithKaryawan()
     {
         return $this->model->with('karyawans')->get();
     }

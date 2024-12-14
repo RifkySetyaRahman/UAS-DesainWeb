@@ -9,13 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
+    protected $table = 'departemen';
     public function up(): void
     {
-        Schema::create('posisis', function (Blueprint $table) {
+        Schema::create('departemen', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->decimal('salary', 10, 2)->nullable();
+            $table->string('name');
+            $table->text('description');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posisis');
+        Schema::dropIfExists('departemen');
     }
 };

@@ -8,6 +8,8 @@ class Karyawan extends Model
 {
     use HasFactory;
 
+    protected $table = 'karyawan';
+
     protected $fillable = [
         'name',
         'email',
@@ -18,13 +20,13 @@ class Karyawan extends Model
         'hire_date',
     ];
 
-    public function departemens()
+    public function departemen()
     {
-        return $this->belongsTo(Departemen::class, 'departemens_id');
+        return $this->belongsTo(Departemen::class, 'departemen_id');
     }
 
-    public function posisis()
+    public function posisi()
     {
-        return $this->belongsTo(Posisi::class, 'posisis_id');
+        return $this->belongsTo(Posisi::class, 'posisi_id');
     }
 }

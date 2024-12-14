@@ -6,6 +6,8 @@ use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\DepartemenController;
 use App\Http\Controllers\PosisiController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Departemen;
+use App\Models\Karyawan;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,4 +27,5 @@ Route::resource('departemens', DepartemenController::class);
 
 Route::resource('posisis', PosisiController::class);
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+

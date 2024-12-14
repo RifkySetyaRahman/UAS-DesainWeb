@@ -4,5 +4,5 @@ namespace App\Repositories;
 
 interface PosisiRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getPositionsWithKaryawans();
+    public function getPosisiWithKaryawan();
 }

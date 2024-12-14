@@ -3,16 +3,15 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\{
-    BaseRepositoryInterface,
-    DepartemenRepositoryInterface,
-    KaryawanRepositoryInterface,
-    PosisiRepositoryInterface,
-    BaseRepository,
-    DepartemenRepository,
-    KaryawanRepository,
-    PosisiRepository
-};
+use App\Repositories\BaseRepository;
+use App\Repositories\DepartemenRepository;
+use App\Repositories\KaryawanRepository;
+use App\Repositories\PosisiRepository;
+
+use App\Repositories\BaseRepositoryInterface;
+use App\Repositories\DepartemenRepositoryInterface;
+use App\Repositories\KaryawanRepositoryInterface;
+use App\Repositories\PosisiRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {

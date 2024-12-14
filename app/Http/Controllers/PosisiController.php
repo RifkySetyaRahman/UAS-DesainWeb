@@ -15,7 +15,7 @@ class PosisiController extends Controller
 
     public function index()
     {
-        $posisis = $this->posisiRepository->getPositionsWithKaryawans();
-        return view('posisi.index', compact('posisis'));
+        $posisi = $this->posisiRepository->getPosisiWithKaryawan();
+        return view('posisi.index', compact('posisi'));
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Repositories\PosisiRepositoryInterface;
 use App\Models\Posisi;
 
 class PosisiRepository extends BaseRepository implements PosisiRepositoryInterface
@@ -16,7 +17,7 @@ class PosisiRepository extends BaseRepository implements PosisiRepositoryInterfa
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPositionsWithKaryawans()
+    public function getPosisiWithKaryawan()
     {
         return $this->model->with('karyawans')->get();
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Repositories\KaryawanRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Http\Requests\KaryawanRequest;
+use App\Models\Karyawan;
 use App\Services\KaryawanService;
 
 class KaryawanController extends Controller
@@ -18,8 +19,8 @@ class KaryawanController extends Controller
 
     public function index()
     {
-        $karyawans = $this->karyawanRepository->all();
-        return view('karyawans.index', compact('karyawans'));
+        $karyawan = $this->karyawanRepository->all();
+        return view('karyawan.index', compact('karyawan'));
     }
 
     public function store(Request $request)
@@ -35,8 +36,9 @@ class KaryawanController extends Controller
         ]);
 
         $this->karyawanRepository->create($validatedData);
-
-        return redirect()->route('karyawans.index')->with('success', 'Karyawan added successfully.');
+        
+        Karyawan::create($request->all());
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan added successfully.');
     }
 
     public function update(Request $request, $id)
@@ -46,32 +48,32 @@ class KaryawanController extends Controller
             'email' => 'required|email|unique:karyawans,email,' . $id,
             'phone' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
-            'departemens_id' => 'required|exists:departemens,id',
-            'posisis_id' => 'required|exists:posisis,id',
+            'departemen_id' => 'required|exists:departemen,id',
+            'posisi_id' => 'required|exists:posisi,id',
             'hire_date' => 'required|date',
         ]);
         
         $this->karyawanRepository->update($id, $validatedData);
 
-        return redirect()->route('karyawans.index')->with('success', 'Karyawan updated successfully.');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan updated successfully.');
     }
 
     public function destroy($id)
     {
         $this->karyawanRepository->delete($id);
 
-        return redirect()->route('karyawans.index')->with('success', 'Karyawan deleted successfully.');
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan deleted successfully.');
     }
 
-    public function getByDepartment($departemenId)
+    public function getByDepartemen($departemenId)
     {
-        $karyawans = $this->karyawanRepository->getKaryawansByDepartment($departemenId);
-        return view('karyawans.department', compact('karyawans'));
+        $karyawans = $this->karyawanRepository->getKaryawanByDepartemen($departemenId);
+        return view('karyawan.departemen', compact('karyawan'));
     }
 
     public function getByPosition($posisiId)
     {
-        $karyawans = $this->karyawanRepository->getKaryawansByPosition($posisiId);
-        return view('karyawans.position', compact('karyawans'));
+        $karyawans = $this->karyawanRepository->getKaryawanByPosisi($posisiId);
+        return view('karyawan.posisi', compact('karyawan'));
     }
 }

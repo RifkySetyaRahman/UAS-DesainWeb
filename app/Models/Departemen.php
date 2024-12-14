@@ -9,10 +9,12 @@ class Departemen extends Model
 {
     use HasFactory;
 
+    protected $table = 'departemen';
+
     protected $fillable = ['name', 'description'];
 
     public function karyawan()
     {
-        return $this->hasMany(Karyawan::class, 'departemens_id');
+        return $this->hasMany(Karyawan::class, 'departemen_id');
     }
 }
