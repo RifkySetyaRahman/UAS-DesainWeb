@@ -13,7 +13,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('users.login');
+Route::get('/   ', [FrontController::class, 'index'])->name('front.index');
+
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/register', [AuthController::class, 'showRegisteration'])->name('registrasi');
