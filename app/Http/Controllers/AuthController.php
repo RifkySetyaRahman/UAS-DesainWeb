@@ -12,7 +12,7 @@ class AuthController extends Controller
     {
         // Validasi input
         $request->validate([
-            'name' => 'required|unique:user|max:255',
+            'name' => 'required|unique:User|max:255',
             'password' => 'required|min:6',
         ]);
 

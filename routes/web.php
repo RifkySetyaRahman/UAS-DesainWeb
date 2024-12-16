@@ -1,17 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\FrontController;
-use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman beranda
-Route::get('/', function () {
+Route::get('/beranda', function () {
     return view('beranda'); // Pastikan view 'beranda' ada di folder resources/views
 })->name('beranda');
-
-// Route untuk menyimpan data registrasi
-Route::post('/beranda', [AuthController::class, 'beranda'])->name('beranda.post');
 
 // Route untuk halaman registrasi
 Route::get('/register', function () {
@@ -29,9 +24,12 @@ Route::get('/login', function () {
 // Route untuk memproses login
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
+  // Rute untuk logout
+  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Route untuk root agar mengarah ke halaman registrasi
+Route::get('/', function () {
+    return redirect()->route('register'); // Redirect ke halaman registrasi
 
-
-Route::resource('karyawan', KaryawanController::class);
-
+});
 

@@ -84,7 +84,7 @@
 <body>
     <div class="login-container">
         <div class="left-side">
-            <img src="{{ asset('assets/imgs/9244.jpg') }}" alt="Background Image" style="width: 159%; height:15ch auto;">
+            <img src="{{ asset('assets/imgs/.jpg') }}" alt="Background Image" style="width: 159%; height:15ch auto;">
             <p class="bottom-text">Sistem Informasi Pendataan Karyawan</p>
         </div>
         <div class="right-side">
