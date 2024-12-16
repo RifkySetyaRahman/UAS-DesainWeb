@@ -5,7 +5,13 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\KaryawanController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [FrontController::class, 'beranda'])->name('front.beranda');
+// Route untuk halaman beranda
+Route::get('/', function () {
+    return view('beranda'); // Pastikan view 'beranda' ada di folder resources/views
+})->name('beranda');
+
+// Route untuk menyimpan data registrasi
+Route::post('/beranda', [AuthController::class, 'beranda'])->name('beranda.post');
 
 // Route untuk halaman registrasi
 Route::get('/register', function () {
