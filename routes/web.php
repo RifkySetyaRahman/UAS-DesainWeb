@@ -3,9 +3,7 @@
 use App\Http\Controllers\User\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KaryawanController;
-use App\Http\Controllers\DepartemenController;
-use App\Http\Controllers\PosisiController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontController;
 use App\Models\Departemen;
 use App\Models\Karyawan;
 
@@ -13,7 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/   ', [FrontController::class, 'index'])->name('front.index');
+Route::get('/', [FrontController::class, 'index'])->name('front.index');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -23,11 +21,5 @@ Route::post('/register', [AuthController::class, 'registrasi']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
 
-Route::resource('karyawans', KaryawanController::class);
-
-Route::resource('departemens', DepartemenController::class);
-
-Route::resource('posisis', PosisiController::class);
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+Route::resource('karyawan', KaryawanController::class);
 
