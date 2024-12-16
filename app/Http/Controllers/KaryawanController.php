@@ -8,6 +8,7 @@ use App\Http\Requests\KaryawanRequest;
 use App\Models\Karyawan;
 use App\Services\KaryawanService;
 
+
 class KaryawanController extends Controller
 {
     protected $karyawanRepository;
@@ -20,7 +21,7 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawan = $this->karyawanRepository->all();
-        return view('karyawan.index', compact('karyawan'));
+        return view('front.karyawan', compact('karyawan'));
     }
 
     public function store(Request $request)
@@ -77,3 +78,4 @@ class KaryawanController extends Controller
         return view('karyawan.posisi', compact('karyawan'));
     }
 }
+

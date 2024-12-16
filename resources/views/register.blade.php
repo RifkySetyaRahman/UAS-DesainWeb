@@ -135,7 +135,7 @@
                     
                     <button type="submit">REGISTER</button>
                 </form>
-                <p class="footer-text">Do you have an account? <a href="{{ route('login') }}" style="color: blue;">Login Now</a></p>
+                <p class="footer-text">Do you have an account? <a href="{{ route('register.post') }}" style="color: blue;">Login Now</a></p>
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@ class FrontService
     KaryawanRepositoryInterface $karyawanRepository, PosisiRepositoryInterface $posisiRepository, 
     BaseRepositoryInterface $baseRepository)
     {
-        $this->departemenRepository = $departemenRepository;
+        //$this->departemenRepository = $departemenRepository;
         //$this->karyawanRepository = $karyawanRepository;
         //$this->posisiRepository = $posisiRepository;
         //$this->baseRepository = $baseRepository;   
@@ -28,11 +28,11 @@ class FrontService
 
     public function getFrontPageData()
     {
-        $departemen = $this->$departemenRepository->getDepartemenWithKaryawan();
+        //$departemen = $this->$departemenRepository->getDepartemenWithKaryawan();
         //$karyawan = $this->$karyawanRepository->getAllKaryawan();
         //$posisi = $this->$posisiRepository->getAllPosisi();
         //$base = $this->$baseRepository->getAllBase();
 
-        return compact('')
+        return compact('front.index');
     }
 }

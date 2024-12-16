@@ -1,25 +1,31 @@
 <?php
 
-use App\Http\Controllers\User\AuthController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrontController;
-use App\Models\Departemen;
-use App\Models\Karyawan;
+use App\Http\Controllers\KaryawanController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [FrontController::class, 'beranda'])->name('front.beranda');
 
-Route::get('/', [FrontController::class, 'index'])->name('front.index');
+// Route untuk halaman registrasi
+Route::get('/register', function () {
+    return view('register'); // Pastikan view 'register' ada di folder resources/views
+})->name('register');
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+// Route untuk menyimpan data registrasi
+Route::post('/register', [AuthController::class, 'register'])->name('register.post');
 
-Route::get('/register', [AuthController::class, 'showRegisteration'])->name('registrasi');
-Route::post('/register', [AuthController::class, 'registrasi']);
+// Route untuk halaman login
+Route::get('/login', function () {
+    return view('login'); // Pastikan view 'login' ada di folder resources/views
+})->name('login');
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('user.logout');
+// Route untuk memproses login
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+
+
+
 
 Route::resource('karyawan', KaryawanController::class);
+
 
