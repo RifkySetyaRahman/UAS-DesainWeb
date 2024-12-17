@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
             $table->foreignId('departemens_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('posisis_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('posisis_id')->constrained('posisis')->cascadeOnDelete();
             $table->date('hire_date');
             $table->timestamps();
         });

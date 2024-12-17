@@ -13,7 +13,7 @@ class Departemen extends Model
 
     protected $fillable = ['name', 'description'];
 
-    public function karyawans()
+    public function karyawan()
     {
         return $this->hasMany(Karyawan::class, 'departemens_id');
     }

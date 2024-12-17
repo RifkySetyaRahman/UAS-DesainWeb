@@ -17,8 +17,8 @@ class DepartemenRepository extends BaseRepository implements DepartemenRepositor
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getDepartemenWithKaryawan()
+    public function getDepartemensWithKaryawans()
     {
-        return $this->model->with('karyawans')->get();
+        return $this->model->with('karyawan')->get();
     }
 }

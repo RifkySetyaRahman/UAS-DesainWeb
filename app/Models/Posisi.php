@@ -13,7 +13,7 @@ class Posisi extends Model
 
     protected $fillable = ['title', 'description', 'salary'];
 
-    public function karyawans()
+    public function karyawan()
     {
         return $this->hasMany(Karyawan::class, 'posisis_id');
     }

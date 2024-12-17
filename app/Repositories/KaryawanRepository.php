@@ -18,7 +18,7 @@ class KaryawanRepository extends BaseRepository implements KaryawanRepositoryInt
      * @param int $departemenId
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getKaryawanByDepartemen($departemenId)
+    public function getKaryawansByDepartemens($departemenId)
     {
         return $this->model->where('departemens_id', $departemenId)->get();
     }
@@ -29,7 +29,7 @@ class KaryawanRepository extends BaseRepository implements KaryawanRepositoryInt
      * @param int $posisiId
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getKaryawanByPosisi($posisiId)
+    public function getKaryawansByPosisis($posisiId)
     {
         return $this->model->where('posisi_id', $posisiId)->get();
     }

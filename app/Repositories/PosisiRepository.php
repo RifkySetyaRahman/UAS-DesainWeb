@@ -17,8 +17,8 @@ class PosisiRepository extends BaseRepository implements PosisiRepositoryInterfa
      *
      * @return \Illuminate\Database\Eloquent\Collection
      */
-    public function getPosisiWithKaryawan()
+    public function getPosisisWithKaryawans()
     {
-        return $this->model->with('karyawans')->get();
+        return $this->model->with('karyawan')->get();
     }
 }

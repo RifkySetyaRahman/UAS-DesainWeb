@@ -4,6 +4,6 @@ namespace App\Repositories;
 
 interface KaryawanRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getKaryawanByDepartemen($departemenId);
-    public function getKaryawanByPosisi($posisiId);
+    public function getKaryawansByDepartemens($departemensId);
+    public function getKaryawansByPosisis($posisisId);
 }

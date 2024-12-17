@@ -4,5 +4,5 @@ namespace App\Repositories;
 
 interface DepartemenRepositoryInterface extends BaseRepositoryInterface
 {
-    public function getDepartemenWithKaryawan();
+    public function getDepartemensWithKaryawans();
 }

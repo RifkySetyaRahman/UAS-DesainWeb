@@ -68,14 +68,14 @@ class KaryawanController extends Controller
 
     public function getByDepartemen($departemenId)
     {
-        $karyawans = $this->karyawanRepository->getKaryawanByDepartemen($departemenId);
+        $karyawans = $this->karyawanRepository->getKaryawansByDepartemens($departemenId);
         return view('karyawan.departemen', compact('karyawan'));
     }
 
     public function getByPosisi($posisisId)
     {
-        $karyawans = $this->karyawanRepository->getKaryawanByPosisi($posisisId);
-        return view('karyawan.posisi', compact('karyawan'));
+        $karyawans = $this->karyawanRepository->getKaryawansByPosisis($posisisId);
+        return view('karyawan.posisi', compact('karyawans'));
     }
 }
 
