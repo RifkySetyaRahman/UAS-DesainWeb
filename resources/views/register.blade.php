@@ -108,7 +108,7 @@
 <body>
     <div class="login-container">
         <div class="left-side">
-            <img src="{{ asset('assets/imgs/AnimasiSistemInfo.jpg') }}" alt="Background Image" style="width: 100%; height: auto;">
+            <img src="{{ asset('assets/imgs/9942.jpg') }}" alt="Background Image" style=width: 159%; height:15ch auto;>
             <p class="bottom-text">Sistem Informasi Pendataan Karyawan</p>
         </div>
         <div class="right-side">
@@ -127,12 +127,6 @@
                     @csrf
                     <input type="text" name="username" placeholder="Enter your username" required>
                     <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                    
-                    <div class="checkbox-container">
-                        <input type="checkbox" id="show-password" onclick="togglePasswordVisibility()">
-                        <label for="show-password">Show Password</label>
-                    </div>
-                    
                     <button type="submit">REGISTER</button>
                 </form>
                 <p class="footer-text">Do you have an account? <a href="{{ route('login.post') }}" style="color: blue;">Login Now</a></p>

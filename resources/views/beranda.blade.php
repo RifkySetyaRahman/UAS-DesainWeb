@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>Tampilan Utama</title>
 </head>
 
@@ -225,7 +225,7 @@
 
     </div>
 
-    <script src="index.js"></script>
+    <script src="assets/js/index.js"></script>
 </body>
 
 </html>
