@@ -10,10 +10,10 @@ return new class extends Migration
      * Run the migrations.
      */
 
-    protected $table = 'departemen';
+    protected $table = 'departemens';
     public function up(): void
     {
-        Schema::create('departemen', function (Blueprint $table) {
+        Schema::create('departemens', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('departemen');
+        Schema::dropIfExists('departemens');
     }
 };

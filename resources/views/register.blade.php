@@ -1,150 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Register</title>
+    <link rel="stylesheet" href="{{ asset('assets/vendors/bootstrap/bootstrap.min.css') }}">
     <style>
         body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
+            background-color: #000; /* Warna latar belakang hitam */
+            color: rgb(17, 10, 10); /* Warna teks putih */
+            height: 100vh; /* Tinggi penuh viewport */
+            display: flex; /* Menggunakan flexbox */
+            justify-content: center; /* Pusatkan secara horizontal */
+            align-items: center; /* Pusatkan secara vertikal */
+            margin: 0; /* Menghapus margin default */
         }
-        .login-container {
-            display: flex;
-            width: 100%;
-            height: 100%;
+        .container {
+            max-width: 500px; /* Lebar maksimum kontainer */
+            padding: 20px; /* Padding dalam kontainer */
+            background-color: #f3f3f3; /* Warna latar belakang kontainer abu-abu gelap */
+            border-radius: 8px; /* Sudut melengkung */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Bayangan */
         }
-        .left-side {
-            flex: 1;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-        .right-side {
-            flex: 1;
-            background-color: #dc3545;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .login-form {
-            width: 300px;
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-        .login-form h1 {
-            margin-bottom: 20px;
-            color: #dc3545;
-            text-align: center;
-        }
-        .login-form input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .login-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: #dc3545;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .login-form button:hover {
-            background-color: #c82333;
-        }
-        .footer-text {
-            margin-top: 20px;
-            text-align: center;
-            color: #6c757d;
-        }
-        .link {
-            text-align: center;
-            margin-top: 10px;
-            color: #ffffff;
-        }
-        .bottom-text {
-            margin-top: 20px;
-            color: #333;
-            text-align: center;
-            padding: 10px;
-            font-size: 18px;
-            font-weight: bold;
+        h2 {
+            text-align: center; /* Pusatkan teks */
+            margin-bottom: 20px; /* Jarak bawah */
         }
         .alert {
-            color: red;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            margin-top: 10px;
-            justify-content: flex-start; /* Geser ke kiri */
-            width: 100%; /* Pastikan lebar 100% */
-        }
-        .checkbox-container input {
-            margin-right: 5px;
-        }
-        .checkbox-container label {
-            margin: 0; /* Menghapus margin untuk label */
-            font-size: 14px; /* Ukuran font label */
+            margin-bottom: 20px; /* Jarak bawah untuk alert */
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <div class="left-side">
-            <img src="{{ asset('assets/imgs/9942.jpg') }}" alt="Background Image" style= width:159%; height:15ch auto;>
-            <p class="bottom-text">Sistem Informasi Pendataan Karyawan</p>
-        </div>
-        <div class="right-side">
-            <div class="login-form">
-                <h1>REGISTER</h1>
-                @if ($errors->any())
-                    <div class="alert">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form method="POST" action="{{ route('register.post') }}">
-                    @csrf
-                    <input type="text" name="username" placeholder="Enter your username" required>
-                    <input type="password" name="password" id="password" placeholder="Enter your password" required>
-                    <button type="submit">REGISTER</button>
-                </form>
-                <p class="footer-text">Do you have an account? <a href="{{ route('login.post') }}" style="color: blue;">Login Now</a></p>
+    <div class="container">
+        <h2>Register</h2>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        <form action="{{ route('register') }}" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="name">Nama:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="password_confirmation">Konfirmasi Password:</label>
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+        <p class="mt-3 text-center">Sudah punya akun? <a href="{{ url('/signin') }}" style="color: #007bff;">Sign In di sini</a></p>
     </div>
-
-    <script>
-        function togglePasswordVisibility() {
-            const passwordInput = document.getElementById('password');
-            const checkbox = document.getElementById('show-password');
-
-            if (checkbox.checked) {
-                passwordInput.type = 'text'; // Tampilkan password
-            } else {
-                passwordInput.type = 'password'; // Sembunyikan password
-            }
-        }
-    </script>
 </body>
 </html>

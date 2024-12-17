@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('beranda'); // Pastikan ini adalah halaman yang ingin Anda tampilkan
+        return view('beranda.index'); // Pastikan ini adalah halaman yang ingin Anda tampilkan
     }
 }

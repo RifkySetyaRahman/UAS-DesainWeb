@@ -9,15 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-
-    protected $table = 'posisi';
     public function up(): void
     {
-        Schema::create('posisi', function (Blueprint $table) {
+        Schema::create('programmers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description')->nullable();
-            $table->decimal('salary', 10, 2)->nullable();
+            $table->string('nama');
+            $table->string('Tanggal_lahir');
+            $table->text('deskripsi');
+            $table->string('item_image_path')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posisi');
+        Schema::dropIfExists('programmers');
     }
 };

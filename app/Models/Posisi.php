@@ -9,12 +9,12 @@ class Posisi extends Model
 {
     use HasFactory;
 
-    protected $table = 'posisi';
+    protected $table = 'posisis';
 
     protected $fillable = ['title', 'description', 'salary'];
 
-    public function karyawan()
+    public function karyawans()
     {
-        return $this->hasMany(Karyawan::class, 'posisi_id');
+        return $this->hasMany(Karyawan::class, 'posisis_id');
     }
 }

@@ -9,17 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    protected $table = 'karyawan';
+    protected $table = 'karyawans';
     public function up(): void
     {
-        Schema::create('karyawan', function (Blueprint $table) {
+        Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone')->nullable();
             $table->text('address')->nullable();
-            $table->foreignId('departemen_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('posisi_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('departemens_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('posisis_id')->constrained()->cascadeOnDelete();
             $table->date('hire_date');
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('karyawan');
+        Schema::dropIfExists('karyawans');
     }
 };
