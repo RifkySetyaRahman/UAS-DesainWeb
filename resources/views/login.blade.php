@@ -13,12 +13,12 @@
         }
         .login-container {
             display: flex;
-            width: 100%; /* Lebar 100% untuk seluruh layar */
-            height: 100%; /* Tinggi 100% untuk seluruh layar */
+            width: 100%;
+            height: 100%;
         }
         .left-side {
             flex: 1;
-            background-color: #ffffff; /* Warna putih */
+            background-color: #ffffff;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -27,9 +27,8 @@
         }
         .right-side {
             flex: 1;
-            background-color: #dc3545; /* Warna merah */
+            background-color: #dc3545;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 20px;
@@ -73,31 +72,38 @@
         }
         .bottom-text {
             margin-top: 20px;
-            color: #333; /* Warna kontras untuk teks */
+            color: #333;
             text-align: center;
             padding: 10px;
-            font-size: 18px; /* Ukuran font yang sesuai */
-            font-weight: bold; /* Menebalkan teks */
+            font-size: 18px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
     <div class="login-container">
+        <!-- Bagian Kiri -->
         <div class="left-side">
-            <img src="{{ asset('assets/imgs/.jpg') }}" alt="Background Image" style="width: 159%; height:15ch auto;">
+            <img src="{{ asset('assets/imgs/.jpg') }}" alt="Background Image" style="width: 159%; height: auto;">
             <p class="bottom-text">Sistem Informasi Pendataan Karyawan</p>
         </div>
+
+        <!-- Bagian Kanan -->
         <div class="right-side">
             <div class="login-form">
                 <h1>LOGIN</h1>
+                <!-- Form Login -->
                 <form action="{{ route('login.post') }}" method="POST">
                     @csrf
                     <input type="text" name="username" placeholder="Enter your username" required>
                     <input type="password" name="password" placeholder="Enter your password" required>
-                    <button type="submit">Login<a href="{{ route('beranda') }}"></button>
+                    <button type="submit">Login</button>
                 </form>
 
-                <p class="footer-text">Don’t have an account? <a href="{{ route('register') }}" style="color: blue;">Register Now</a></p>
+                <p class="footer-text">
+                    Don’t have an account? 
+                    <a href="{{ route('register') }}" style="color: blue;">Register Now</a>
+                </p>
             </div>
         </div>
     </div>

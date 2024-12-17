@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'providers' => [
+        'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class,
+        ],
+        ],
     ],
 
     /*
@@ -64,7 +70,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-
+        'users' => [
+        'driver' => 'eloquent',
+        'model' => App\Models\User::class, // Menambahkan model Pengguna
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -92,6 +101,12 @@ return [
 
     'passwords' => [
         'users' => [
+            'provider' => 'users',
+            'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'users' => [ // Menambahkan pengaturan untuk password reset Pengguna
             'provider' => 'users',
             'table' => env('AUTH_PASSWORD_RESET_TOKEN_TABLE', 'password_reset_tokens'),
             'expire' => 60,

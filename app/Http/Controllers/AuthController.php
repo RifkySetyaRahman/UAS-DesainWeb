@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -19,7 +21,7 @@ class AuthController extends Controller
         // Simpan pengguna baru tanpa hashing password
         User::create([
             'name' => $request->username,
-            'password' => $request->password, // Simpan password tanpa hashing
+            'password' => Hash::make($request->password), // Simpan password tanpa hashing
         ]);
 
         // Redirect atau tampilkan pesan sukses
@@ -28,6 +30,13 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Jika login berhasil, redirect ke halaman beranda
+            return redirect()->route('beranda');
+        }
+
         // Validasi input
         $request->validate([
             'name' => 'required',
@@ -35,18 +44,22 @@ class AuthController extends Controller
         ]);
 
         // Cek kredensial menggunakan model Pengguna
-        if (Auth::guard('User')->attempt(['name' => $request->username, 'password' => $request->password])) {
+        if (Auth::attempt(['name' => $request->username, 'password' => $request->password])) {
             // Jika berhasil, redirect ke halaman home
             return redirect()->route('beranda')->with('success', 'Login successful!');
+        
+            return back()->withErrors([
+                'email' => 'Email atau password salah.',
+            ]);
         }
 
         // Jika gagal, kembali ke halaman login dengan pesan error
         return redirect('login')->with('error', 'Invalid name or password.');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
-        return redirect('login')->with('success', 'You have been logged out.');
+        return redirect()->route('login')->with('success', 'You have been logged out.');
     }
 }

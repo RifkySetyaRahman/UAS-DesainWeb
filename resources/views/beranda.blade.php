@@ -15,9 +15,8 @@
         <!-- Sidebar Section -->
         <aside>
             <div class="toggle">
-                <div class="logo">
-                    <img src="images/logo.png">
-                    <h2>Asmr<span class="danger">Prog</span></h2>
+                <div class="logo">  
+                    <h2>PT<span class="danger">BATUBARA</span></h2>
                 </div>
                 <div class="close" id="close-btn">
                     <span class="material-icons-sharp">
@@ -56,7 +55,10 @@
                     <span class="material-icons-sharp">
                         logout
                     </span>
-                    <h3>Logout</h3>
+                    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button type="submit">Logout</button>
+    </form>
                 </a>
             </div>
         </aside>
@@ -163,11 +165,10 @@
 
                 <div class="profile">
                     <div class="info">
-                        < <p>Hey, <b>{{auth()->users()->name }}</b></p>
-                        <small class="text-muted">{{ auth()->user()->role ?? 'User' }}</small>
+                        <small class="text-muted"></small>
                     </div>
                     <div class="profile-photo">
-                        <img src="assets/imgs/pricing plans_ Freepik.jpg">
+                        <img src="public/assets/imgs/profil.jpg">
                     </div>
                 </div>
 
@@ -176,7 +177,6 @@
 
             <div class="user-profile">
                 <div class="logo">
-                    <img src="assets/imgs/pricing plans_ Freepik.jpg">
                     <h2>KangBatuBara</h2>
                     <p>Jual Beli Ternak Lele</p>
                 </div>

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 // Route untuk halaman beranda
 Route::get('/beranda', function () {
     return view('beranda'); // Pastikan view 'beranda' ada di folder resources/views
-})->name('beranda');
+})->name('beranda')->middleware('auth');
 
 // Route untuk halaman registrasi
 Route::get('/register', function () {
@@ -18,8 +18,8 @@ Route::post('/register', [AuthController::class, 'register'])->name('register.po
 
 // Route untuk halaman login
 Route::get('/login', function () {
-    return view('login'); // Pastikan view 'login' ada di folder resources/views
-})->name('login');
+    return view('beranda'); // Pastikan view 'login' ada di folder resources/views
+})->name('login')->middleware('guest');
 
 // Route untuk memproses login
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
