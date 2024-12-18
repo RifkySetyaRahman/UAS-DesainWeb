@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Repositories\KaryawanRepositoryInterface;
 use App\Models\Karyawan;
 
 class KaryawanRepository extends BaseRepository implements KaryawanRepositoryInterface
@@ -20,7 +19,7 @@ class KaryawanRepository extends BaseRepository implements KaryawanRepositoryInt
      */
     public function getKaryawansByDepartemens($departemenId)
     {
-        return $this->model->where('departemens_id', $departemenId)->get();
+        return $this->model->where('departemen_id', $departemenId)->get();
     }
 
     /**
@@ -34,3 +33,4 @@ class KaryawanRepository extends BaseRepository implements KaryawanRepositoryInt
         return $this->model->where('posisi_id', $posisiId)->get();
     }
 }
+    

@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a href="#home" class="nav-link">Beranda</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('karyawan.index') }}" class="nav-link">Karyawan</a>
+                    </li>
                 </ul>
                 <ul class="navbar-nav brand">
                     <img src="{{ asset('assets/imgs/hehe.jpg') }}" alt="" class="brand-img">

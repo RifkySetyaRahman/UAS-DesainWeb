@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\KaryawanRepositoryInterface;
 use Illuminate\Http\Request;
-use App\Http\Requests\KaryawanRequest;
 use App\Models\Karyawan;
-use App\Services\KaryawanService;
-
 
 class KaryawanController extends Controller
 {
@@ -21,8 +18,17 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawans = $this->karyawanRepository->all();
-        return view('/Karyawan.index');
+        return view('karyawan.index', ['karyawans' => $karyawans]);
     }
+
+//     public function create()
+//  {
+//     $departemens = departemen::all(); // Ambil semua data departemen
+//     $posisis = posisi::all(); // Ambil semua data posisi
+
+//     return view('karyawan.create', compact('departemens', 'posisis'));
+//  }
+
 
     public function store(Request $request)
     {
@@ -31,14 +37,12 @@ class KaryawanController extends Controller
             'email' => 'required|email|unique:karyawans,email',
             'phone' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
-            'departemens_id' => 'required|exists:departemens,id',
-            'posisis_id' => 'required|exists:posisis,id',
+            'departemen_id' => 'required|exists:departemens,id',
+            'posisi_id' => 'required|exists:posisis,id',
             'hire_date' => 'required|date',
         ]);
 
         $this->karyawanRepository->create($validatedData);
-        
-        Karyawan::create($request->all());
         return redirect()->route('karyawan.index')->with('success', 'Karyawan added successfully.');
     }
 
@@ -49,8 +53,8 @@ class KaryawanController extends Controller
             'email' => 'required|email|unique:karyawans,email,' . $id,
             'phone' => 'nullable|string|max:15',
             'address' => 'nullable|string|max:255',
-            'departemen_id' => 'required|exists:departemen,id',
-            'posisi_id' => 'required|exists:posisi,id',
+            'departemen_id' => 'required|exists:departemens,id',
+            'posisi_id' => 'required|exists:posisis,id',
             'hire_date' => 'required|date',
         ]);
         
@@ -69,13 +73,12 @@ class KaryawanController extends Controller
     public function getByDepartemen($departemenId)
     {
         $karyawans = $this->karyawanRepository->getKaryawansByDepartemens($departemenId);
-        return view('karyawan.departemen', compact('karyawan'));
+        return view('karyawan.departemen', compact('karyawans'));
     }
 
-    public function getByPosisi($posisisId)
+    public function getByPosisi($posisiId)
     {
-        $karyawans = $this->karyawanRepository->getKaryawansByPosisis($posisisId);
-        return view('karyawan.posisi', compact('karyawan'));
+        $karyawans = $this->karyawanRepository->getKaryawansByPosisis($posisiId);
+        return view('karyawan.posisi', compact('karyawans'));
     }
 }
-

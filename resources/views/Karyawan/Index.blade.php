@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Data Form</title>
-    <link rel="stylesheet" href="johndoe.css">
+    <link rel="stylesheet" href="assets/css/johndoe.css">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     <header class="header">
@@ -41,10 +41,7 @@
                         <a href="#home" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#about" class="nav-link">Tentang</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#resume" class="nav-link">Daftar distribusi dan donatur</a>
+                        <a href="{{ route('karyawan.index') }}" class="nav-link">Karyawan</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav brand">
@@ -66,9 +63,12 @@
         </div>
     </nav>
 
+    <div id="notification" class="alert alert-success" style="display: none; margin-top: 10px;"></div>
+
     <div class="container mt-5">
         <h2 class="text-center mb-4">Employee Data Form</h2>
-        <form action="/save-data" method="POST">
+        <form id="employee-form" action="{{ route('karyawan.store') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Enter your full name" required>
@@ -111,7 +111,6 @@
             </div>
             <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </form>
-        <p class="salary-notice text-center mt-3">Note: Salary data will be added by the admin.</p>
     </div>
 
     <div class="container mt-5">
@@ -126,42 +125,18 @@
                     <th>Departemen</th>
                     <th>Posisi</th>
                     <th>Hire Date</th>
-                    <th>Salary</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Example data -->
+                @foreach($karyawans as $data)
                 <tr>
-                    <td>John Doe</td>
-                    <td>john.doe@example.com</td>
-                    <td>+123456789</td>
-                    <td>123 Main Street</td>
-                    <td>Engineering</td>
-                    <td>Manager</td>
-                    <td>2024-01-01</td>
-                    <td>$5000</td>
-                </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>jane.smith@example.com</td>
-                    <td>+987654321</td>
-                    <td>456 Oak Avenue</td>
-                    <td>Marketing</td>
-                    <td>Staff</td>
-                    <td>2023-05-15</td>
-                    <td>$3500</td>
-                </tr>
-                <!-- Data dynamically populated -->
-              @foreach($karyawans as $Data)
-                <tr>
-                    <td>{{ $Data->name }}</td>
-                    <td>{{ $Data->email }}</td>
-                    <td>{{ $Data->phone }}</td>
-                    <td>{{ $Data->address }}</td>
-                    <td>{{ $Data->departemens_id }}</td>
-                    <td>{{ $Data->posisis_id }}</td>
-                    <td>{{ $Data->hire_date }}</td>
-                    <td>{{ $Data->salary }}</td>
+                    <td>{{ $data->name }}</td>
+                    <td>{{ $data->email }}</td>
+                    <td>{{ $data->phone }}</td>
+                    <td>{{ $data->address }}</td>
+                    <td>{{ $data->departemen ? $data->departemen->name : 'N/A' }}</td>
+                    <td>{{ $data->posisi ? $data->posisi->name : 'N/A' }}</td>
+                    <td>{{ $data->hire_date }}</td>
                 </tr>
                 @endforeach
             </tbody>

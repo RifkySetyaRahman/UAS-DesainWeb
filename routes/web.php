@@ -23,6 +23,9 @@ Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [UserController::class, 'register']);
 
 Route::get('/karyawan', [KaryawanController::class, 'index']);
+Route::post('/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
+// Route::get('/karyawan', [KaryawanController::class, 'create'])->name('karyawan.create');
+
 
 // Rute untuk sign in
 Route::get('/signin', [LoginController::class, 'showLoginForm'])->name('signin');
