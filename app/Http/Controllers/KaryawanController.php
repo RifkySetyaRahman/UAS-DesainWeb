@@ -20,8 +20,8 @@ class KaryawanController extends Controller
 
     public function index()
     {
-        $karyawan = $this->karyawanRepository->all();
-        return view('front.karyawan', compact('karyawan'));
+        $karyawans = $this->karyawanRepository->all();
+        return view('/Karyawan.index');
     }
 
     public function store(Request $request)
@@ -75,7 +75,7 @@ class KaryawanController extends Controller
     public function getByPosisi($posisisId)
     {
         $karyawans = $this->karyawanRepository->getKaryawansByPosisis($posisisId);
-        return view('karyawan.posisi', compact('karyawans'));
+        return view('karyawan.posisi', compact('karyawan'));
     }
 }
 

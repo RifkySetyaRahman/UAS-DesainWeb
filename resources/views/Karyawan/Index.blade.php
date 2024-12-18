@@ -152,16 +152,16 @@
                     <td>$3500</td>
                 </tr>
                 <!-- Data dynamically populated -->
-                @foreach($employees as $employee)
+              @foreach($karyawans as $Data)
                 <tr>
-                    <td>{{ $employee->name }}</td>
-                    <td>{{ $employee->email }}</td>
-                    <td>{{ $employee->phone }}</td>
-                    <td>{{ $employee->address }}</td>
-                    <td>{{ $employee->departemen_id }}</td>
-                    <td>{{ $employee->posisi_id }}</td>
-                    <td>{{ $employee->hire_date }}</td>
-                    <td>{{ $employee->salary }}</td>
+                    <td>{{ $Data->name }}</td>
+                    <td>{{ $Data->email }}</td>
+                    <td>{{ $Data->phone }}</td>
+                    <td>{{ $Data->address }}</td>
+                    <td>{{ $Data->departemens_id }}</td>
+                    <td>{{ $Data->posisis_id }}</td>
+                    <td>{{ $Data->hire_date }}</td>
+                    <td>{{ $Data->salary }}</td>
                 </tr>
                 @endforeach
             </tbody>

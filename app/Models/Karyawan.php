@@ -20,12 +20,12 @@ class Karyawan extends Model
         'hire_date',
     ];
 
-    public function departemen()
+    public function departemens()
     {
         return $this->belongsTo(Departemen::class, 'departemens_id');
     }
 
-    public function posisi()
+    public function posisis()
     {
         return $this->belongsTo(Posisi::class, 'posisis_id');
     }

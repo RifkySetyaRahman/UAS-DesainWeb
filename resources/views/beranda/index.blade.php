@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="johndoe.css">
+    <link rel="stylesheet" href="{{ asset('assets/css/johndoe.css') }}">
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
     <!-- Header -->
@@ -166,6 +166,24 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <section class="section" id="service">
+        <div class="container">
+            <h2 class="mb-5 pb-4"><span class="text-danger">Daftar Programmer</span> yang bekerja</h2>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="card mb-5">
+                        <div class="card-header has-icon">
+                            <i class="ti-user text-danger" aria-hidden="true"></i> <!-- Ikon manusia -->
+                        </div>
+                        <div class="card-body px-4 py-3">
+                            <h5 class="mb-3 card-title text-dark">About</h5>
+                            <p class="subtitle">List orang yang bekerja dibelakang web</p>
+                            <a href="{{ route('programmers.index') }}" class="btn btn-primary">ABOUT</a>
+                        </div>
+                    </div>
+                </div>
     </section>
 </body>
 </html>
