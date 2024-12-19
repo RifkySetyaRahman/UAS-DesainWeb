@@ -17,23 +17,24 @@ class KaryawanController extends Controller
         $this->karyawanRepository = $karyawanRepository;
     }
 
+    // Tampilkan data karyawan dengan departemen dan posisi
     public function index()
     {
-        $karyawans = $this->karyawanRepository->all();
+        $karyawans = Karyawan::with('departemens', 'posisis')->get(); // Data karyawan
         $departemens = Departemen::all(); // Data departemen
         $posisis = Posisi::all(); // Data posisi
 
-        return view('karyawan.index', compact('karyawans', 'departemens', 'posisis'));
+        return view('karyawan.index', ['karyawans' => $karyawans], compact('karyawans', 'departemens', 'posisis'));
     }
 
+    // Form untuk membuat data karyawan baru
     public function create()
     {
-     $departemens = departemen::all(); // Ambil semua data departemen
-     $posisis = posisi::all(); // Ambil semua data posisi
+        $departemens = Departemen::all(); // Ambil semua data departemen
+        $posisis = Posisi::all(); // Ambil semua data posisi
 
-    return view('karyawan.index', compact('departemens', 'posisis'));
+        return view('karyawan.index', compact('departemens', 'posisis'));
     }
-
 
     public function store(Request $request)
     {
@@ -48,6 +49,7 @@ class KaryawanController extends Controller
         ]);
 
         $this->karyawanRepository->create($validatedData);
+
         return redirect()->route('karyawan.index')->with('success', 'Karyawan added successfully.');
     }
 
@@ -63,16 +65,6 @@ class KaryawanController extends Controller
             'hire_date' => 'required|date',
         ]);
 
-        Karyawan::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'departemen_id' => $request->departemen,
-            'posisi_id' => $request->posisi,
-            'hire_date' => $request->hire_date,
-        ]);
-        
         $this->karyawanRepository->update($id, $validatedData);
 
         return redirect()->route('karyawan.index')->with('success', 'Karyawan updated successfully.');
@@ -88,12 +80,14 @@ class KaryawanController extends Controller
     public function getByDepartemen($departemenId)
     {
         $karyawans = $this->karyawanRepository->getKaryawansByDepartemens($departemenId);
+
         return view('karyawan.departemen', compact('karyawans'));
     }
 
     public function getByPosisi($posisiId)
     {
         $karyawans = $this->karyawanRepository->getKaryawansByPosisis($posisiId);
+
         return view('karyawan.posisi', compact('karyawans'));
     }
 }

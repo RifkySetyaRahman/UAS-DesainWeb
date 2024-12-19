@@ -38,7 +38,7 @@
             <div class="collapse mt-sm-20 navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="#home" class="nav-link">Beranda</a>
+                        <a href="{{ route('home') }}" class="nav-link">Beranda</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('karyawan.index') }}" class="nav-link">Karyawan</a>
@@ -89,7 +89,7 @@
                 <label for="departemen_id">Departemen</label>
                 <select id="departemen_id" name="departemen_id" class="form-control" required>
                     @foreach ($departemens as $departemen)
-                    <option value="{{$departemen->id}}">{{$departemen->name}}</option>
+                    <option value="{{$departemen->id}}">{{$departemen->id}}</option>
                     @endforeach
                 </select>
             </div>
@@ -97,7 +97,7 @@
                 <label for="posisi_id">Posisi</label>
                 <select id="posisi_id" name="posisi_id" class="form-control" required>
                     @foreach ($posisis as $posisi)
-                    <option value="{{$posisi->id}}">{{$posisi->title}}</option>
+                    <option value="{{$posisi->id}}">{{$posisi->id}}</option>
                     @endforeach
                 </select>
             </div>
