@@ -63,11 +63,11 @@
         </div>
     </nav>
 
-    <div id="notification" class="alert alert-success" style="display: none; margin-top: 10px;"></div>
+    <div class="notification" class="alert alert-success" style="display: none; margin-top: 10px;"></div>
 
     <div class="container mt-5">
         <h2 class="text-center mb-4">Employee Data Form</h2>
-        <form id="employee-form" action="{{ route('karyawan.store') }}" method="POST">
+        <form  action="{{ route('karyawan.store') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>
@@ -88,21 +88,17 @@
             <div class="form-group">
                 <label for="departemen_id">Departemen</label>
                 <select id="departemen_id" name="departemen_id" class="form-control" required>
-                    <option value="">-- Select Departemen --</option>
-                    <option value="1">HR</option>
-                    <option value="2">Finance</option>
-                    <option value="3">Engineering</option>
-                    <option value="4">Marketing</option>
+                    @foreach ($departemens as $departemen)
+                    <option value="{{$departemen->id}}">{{$departemen->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
                 <label for="posisi_id">Posisi</label>
                 <select id="posisi_id" name="posisi_id" class="form-control" required>
-                    <option value="">-- Select Position --</option>
-                    <option value="1">Manager</option>
-                    <option value="2">Supervisor</option>
-                    <option value="3">Staff</option>
-                    <option value="4">Intern</option>
+                    @foreach ($posisis as $posisi)
+                    <option value="{{$posisi->id}}">{{$posisi->title}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">
@@ -134,8 +130,8 @@
                     <td>{{ $data->email }}</td>
                     <td>{{ $data->phone }}</td>
                     <td>{{ $data->address }}</td>
-                    <td>{{ $data->departemen ? $data->departemen->name : 'N/A' }}</td>
-                    <td>{{ $data->posisi ? $data->posisi->name : 'N/A' }}</td>
+                    <td>{{ $data->departemens->name}}</td>
+                    <td>{{ $data->posisis->title}}</td>
                     <td>{{ $data->hire_date }}</td>
                 </tr>
                 @endforeach

@@ -22,7 +22,7 @@ Route::get('/programmers', [ProgrammerController::class, 'index'])->name('progra
 Route::get('/register', [UserController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [UserController::class, 'register']);
 
-Route::get('/karyawan', [KaryawanController::class, 'index']);
+Route::get('/karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
 Route::post('/karyawan', [KaryawanController::class, 'store'])->name('karyawan.store');
 // Route::get('/karyawan', [KaryawanController::class, 'create'])->name('karyawan.create');
 

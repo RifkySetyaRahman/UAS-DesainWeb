@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Repositories\KaryawanRepositoryInterface;
 use Illuminate\Http\Request;
 use App\Models\Karyawan;
+use App\Models\Departemen;
+use App\Models\Posisi;
 
 class KaryawanController extends Controller
 {
@@ -18,16 +20,19 @@ class KaryawanController extends Controller
     public function index()
     {
         $karyawans = $this->karyawanRepository->all();
-        return view('karyawan.index', ['karyawans' => $karyawans]);
+        $departemens = Departemen::all(); // Data departemen
+        $posisis = Posisi::all(); // Data posisi
+
+        return view('karyawan.index', compact('karyawans', 'departemens', 'posisis'));
     }
 
-//     public function create()
-//  {
-//     $departemens = departemen::all(); // Ambil semua data departemen
-//     $posisis = posisi::all(); // Ambil semua data posisi
+    public function create()
+    {
+     $departemens = departemen::all(); // Ambil semua data departemen
+     $posisis = posisi::all(); // Ambil semua data posisi
 
-//     return view('karyawan.create', compact('departemens', 'posisis'));
-//  }
+    return view('karyawan.index', compact('departemens', 'posisis'));
+    }
 
 
     public function store(Request $request)
@@ -56,6 +61,16 @@ class KaryawanController extends Controller
             'departemen_id' => 'required|exists:departemens,id',
             'posisi_id' => 'required|exists:posisis,id',
             'hire_date' => 'required|date',
+        ]);
+
+        Karyawan::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
+            'departemen_id' => $request->departemen,
+            'posisi_id' => $request->posisi,
+            'hire_date' => $request->hire_date,
         ]);
         
         $this->karyawanRepository->update($id, $validatedData);
