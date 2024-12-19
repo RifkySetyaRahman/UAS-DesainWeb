@@ -57,11 +57,11 @@
     </nav>
 
     <div class="container mt-5">
-        <h2 class="mb-4 text-center"><span class="text-danger">Programmer</span> yang Bekerja</h2>
+        <h2 class="mb-4 text-center">Programmer yang Bekerja</h2>
         <div class="row justify-content-center">
             @foreach($programmers as $programmer)
                 <div class="col-md-4 col-sm-6">
-                    <div class="profile-card text-center">
+                    <div class="profile-square text-center">
                         <div class="image-background">
                             <img src="{{ asset('storage/' . $programmer->item_image_path) }}" alt="Foto {{ $programmer->nama }}" class="img-fluid">
                         </div>

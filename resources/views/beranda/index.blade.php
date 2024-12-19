@@ -65,23 +65,20 @@
         </div>
     </nav>
 
-    <!-- Dashboard Section -->
     <div class="container mt-5">
         <h2 class="text-center mb-4">Dashboard</h2>
         <div class="row">
-            <!-- Card for Total Employees -->
             <div class="col-md-4">
-                <div class="card text-white bg-primary mb-3">
+                <div class="card text-black bg-primary mb-3">
                     <div class="card-header">Total Karyawan</div>
-                    <div class="card-body">
+                    <div class="card-body ">
                         <h5 class="card-title text-center">{{ $totalKaryawans }}</h5>
                     </div>
                 </div>
             </div>
-            
-            <!-- Card for Total Departments -->
+
             <div class="col-md-4">
-                <div class="card text-white bg-success mb-3">
+                <div class="card text-black bg-success mb-3">
                     <div class="card-header">Total Departemen</div>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ $totalDepartemens }}</h5>
@@ -89,9 +86,8 @@
                 </div>
             </div>
 
-            <!-- Card for Total Positions -->
             <div class="col-md-4">
-                <div class="card text-white bg-info mb-3">
+                <div class="card text-black bg-info mb-3">
                     <div class="card-header">Total Posisi</div>
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ $totalPosisis }}</h5>
@@ -109,7 +105,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm">
-                        <img src="{{ asset('assets/imgs/tambang1.jpg') }}" alt="Tambang Batubara" class="card-img-top">
+                        <img src="{{ asset('assets/imgs/tambang1.png') }}" alt="Tambang Batubara" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Lokasi Tambang A</h5>
                             <p class="card-text">Tambang dengan teknologi modern untuk efisiensi dan keberlanjutan.</p>
@@ -127,7 +123,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <div class="card shadow-sm">
-                        <img src="{{ asset('assets/imgs/tambang3.jpg') }}" alt="CSR Perusahaan" class="card-img-top">
+                        <img src="{{ asset('assets/imgs/tambang3.png') }}" alt="CSR Perusahaan" class="card-img-top">
                         <div class="card-body">
                             <h5 class="card-title">Program CSR</h5>
                             <p class="card-text">Kontribusi kami untuk masyarakat sekitar tambang.</p>
@@ -173,7 +169,7 @@
 
     <section class="section" id="service">
         <div class="container">
-            <h2 class="mb-5 pb-4"><span class="text-danger">Daftar Programmer</span> yang bekerja</h2>
+            <h2 class="mb-5 pb-4">Daftar Programmer yang bekerja</h2>
             <div class="row">
                 <div class="col-md-4 col-sm-6">
                     <div class="card mb-5">
@@ -182,7 +178,7 @@
                         </div>
                         <div class="card-body px-4 py-3">
                             <h5 class="mb-3 card-title text-dark">About</h5>
-                            <p class="subtitle">List orang yang bekerja dibelakang web</p>
+                            <p class="subtitle">Programmer dari Website Ini</p>
                             <a href="{{ route('programmers.index') }}" class="btn btn-primary">ABOUT</a>
                         </div>
                     </div>

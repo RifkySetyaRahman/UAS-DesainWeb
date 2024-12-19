@@ -43,7 +43,7 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('login') }}" method="POST"> <!-- Ganti route di sini -->
+        <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
                 <label for="email">Email:</label>
