@@ -52,9 +52,10 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a href="#portfolio" class="nav-link">Dokumentasi</a>
-                    </li>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#portfolio" class="nav-link">Portofolio</a>
+                        </li>
                     <li class="nav-item">
                         <a href="#blog" class="nav-link">Breaking News</a>
                     </li>
